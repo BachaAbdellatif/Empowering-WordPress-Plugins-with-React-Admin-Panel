@@ -1,0 +1,21 @@
+{
+  "name": "react-panel",
+  "version": "1.0.0",
+  "description": "",
+  "license": "LGPL-2.1-only",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "packages-update": "wp-scripts packages-update"
+  },
+  "keywords": [],
+  "author": "Art Pixel",
+  "devDependencies": {
+    "@wordpress/scripts": "^26.16.0"
+  },
+  "dependencies": {
+    "@wordpress/element": "^5.22.0",
+    "react-router-dom": "^6.18.0"
+  }
+}
