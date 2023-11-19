@@ -5,10 +5,10 @@ import './style.scss';
 
  const App = () => {
     return <>
-    <Panel header="Plugin Settings">
+            <Panel header="Plugin Settings V 1.0">
                 <ArPanel />
-    </Panel>
+            </Panel>
         
-    </>
+            </>
  }
   render(<App />, document.getElementById("ar_setting"))

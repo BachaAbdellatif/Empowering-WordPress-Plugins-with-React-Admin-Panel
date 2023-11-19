@@ -1,13 +1,20 @@
 import { TextControl } from '@wordpress/components';
-import { useOutletContext } from "react-router-dom";
+import { useContext } from 'react';
+import { dataContext } from './datacontext';
 
-const InputText = ( {name, handeloptions} ) => {
-   // const [dashOptions, setDashoptions] = useOutletContext();
-    console.log("here", handeloptions)
+const ArInputText = ( {name} ) => {
+       
+    const [dashOptions, setDashoptions] = useContext(dataContext)
+        
     return <TextControl
             label= "input test"
-            value = {name}
-            onChange={ e => { console.log(e)} }
+            value = {dashOptions[name]}
+            onChange={ (value) =>  setDashoptions( {
+                ...dashOptions,
+                [name] : value
+            })
+                
+            }  
     />
 }
-export default InputText
+export default ArInputText

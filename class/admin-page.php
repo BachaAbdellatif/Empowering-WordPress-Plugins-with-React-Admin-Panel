@@ -21,15 +21,18 @@ class aradminPage {
                 3
             );
     }
+
+    //----- Dashbord Page
     function arDashboardPage() {
         ?>
-        <div id="ar_setting">
-
-        </div><?php
+        <div id="ar_setting"></div><?php
     }
 
     function ar_admin_scripts() {
+        //------- enqueue Wordpress Media library js and css
+        wp_enqueue_media();
 
+         //------- Enqueue Load Build react index and css/js dependencies
         $file_decpandencies_elements = plugin_dir_path( __DIR__).'build/index.asset.php';
         if( file_exists( $file_decpandencies_elements ) ) {     
             $decpandencies_elements = require_once $file_decpandencies_elements;
@@ -45,10 +48,14 @@ class aradminPage {
                 $decpandencies_elements['version'], 
                 true 
             );
+
+            //--- array Options (WP get_options())
             $ar_options = get_option( 'ar_admin_options' );
             if(!is_array($ar_options)) {
                 $ar_options = [];
             }
+
+            //--- wp_localize_script send variables to js code
             $args =[
                 'apiUrl' => home_url( '/wp-json' ),
                 'nonce' => wp_create_nonce( 'wp_rest' ),

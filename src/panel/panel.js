@@ -1,12 +1,25 @@
 import { useState } from "@wordpress/element"
 import { PanelBody, PanelRow, Flex, FlexItem, FlexBlock, FormToggle } from '@wordpress/components';
 import axios from "axios"
+import ArInputText from "./component/inputText";
+import Archeckbox from "./component/checkbox";
+import ArDropdown from "./component/dropdown";
+import ArTextarea from "./component/textareaText";
+import ArMediaUploader from "./component/media-upload";
+import { dataContext } from './component/datacontext';
 
 const ArPanel = () => {
+
+    //---  Rout WP API Link
     const restApiUrl = panelLocalizer.apiUrl + "/aroptions/v1/settings"
+
+    //---- state save Button
     const [saveOptions, setsaveoptions] = useState("Update Options")
+
+    //----- state Panel options
     const [dashOptions, setDashoptions] = useState(panelLocalizer)
-    console.log(dashOptions)
+
+    //--------- Function handel save option
     const handelSubmit = (e) => {
         e.preventDefault()
         setsaveoptions("Updating...")
@@ -24,191 +37,168 @@ const ArPanel = () => {
                 console.log(re)
             })
     }
+
+
     return <>
+   
+                <dataContext.Provider value={[dashOptions, setDashoptions]} >
+                    <form id="panel-form" onSubmit={ e => handelSubmit(e)}>
 
-            <form id="panel-form" onSubmit={ e => handelSubmit(e)}>
-
-            <PanelBody title="Ex Input" initialOpen={true}>
-                <PanelRow>
-                    <Flex
-                        gap={2}
-                        align="center"
-                        justify="space-between"
-                    >
-                        <FlexItem >
-                            <label>Name</label>
-                        </FlexItem>
-                        <FlexBlock >
-                            <input 
-                                type="text" 
-                                name="name"
-                                value={dashOptions.name}
-                                onChange={ (e) => { setDashoptions( {
-                                    ...dashOptions,
-                                    name : e.target.value
-                                }
-                                )
-                                    
-                                }}  
-                                />
-                        </FlexBlock>
-                    </Flex>
-                </PanelRow>
-                <PanelRow>
-                    <Flex
-                        gap={2}
-                        align="center"
-                        justify="space-between"
-                    >
-                        <FlexItem >
-                            <label>Phone</label>
-                        </FlexItem>
-                        <FlexBlock >
-                            <input 
-                                type="text" 
-                                name="phone" 
-                                value={dashOptions.phone}
-                                onChange={ (e) => { setDashoptions( {
-                                            ...dashOptions,
-                                            phone : e.target.value
-                                        })
-                                    }
-                                }         
-                            />
-                        </FlexBlock>
-                    </Flex>
-                </PanelRow>
-                <PanelRow>
-                    <Flex
-                    gap={2}
-                    align="center"
-                    justify="space-between"
-                    >
-                        <FlexItem >
-                            <label>Email</label>
-                        </FlexItem>
-                        <FlexBlock >
-                            <input 
-                                type="text" 
-                                name="email" 
-                                value={dashOptions.email}
-                                onChange={ (e) => { setDashoptions( {
-                                    ...dashOptions,
-                                    email : e.target.value
-                                }
-                                )
-                                    
-                                }} 
-                                />
-                        </FlexBlock>
-                    </Flex>
-                </PanelRow>
-            </PanelBody>   
-
-            <PanelBody title="Ex Checkbox" initialOpen={false}>
-                <PanelRow>
-                    <Flex
-                        gap={2}
-                        align="center"
-                        justify="space-between"
-                    >
-                        <FlexItem >
-                            <label>Eneable / Disable Option</label>
-                        </FlexItem>
-                        <FlexBlock >
-                            <input 
-                                    type="checkbox" 
-                                    name="subscribe" 
-                                    checked={dashOptions.subscribe}
-                                    onChange={ (e) => { setDashoptions( {
+                        <PanelBody title="Input" initialOpen={true}>
+                            <PanelRow>
+                                <Flex
+                                    gap={2}
+                                    align="center"
+                                    justify="space-between"
+                                >
+                                    <FlexItem >
+                                        <label>Name</label>
+                                    </FlexItem>
+                                    <FlexBlock >
+                                        <ArInputText name="name" />
+                                    </FlexBlock>
+                                </Flex>
+                            </PanelRow>
+                            <PanelRow>
+                                <Flex
+                                    gap={2}
+                                    align="center"
+                                    justify="space-between"
+                                >
+                                    <FlexItem >
+                                        <label>Phone</label>
+                                    </FlexItem>
+                                    <FlexBlock >
+                                        <ArInputText name="phone" />
+                                    </FlexBlock>
+                                </Flex>
+                            </PanelRow>
+                            <PanelRow>
+                                <Flex
+                                gap={2}
+                                align="center"
+                                justify="space-between"
+                                >
+                                    <FlexItem >
+                                        <label>Email</label>
+                                    </FlexItem>
+                                    <FlexBlock >
+                                        <input 
+                                            type="text" 
+                                            name="email" 
+                                            value={dashOptions.email}
+                                            onChange={ (e) => { setDashoptions( {
                                                 ...dashOptions,
-                                                subscribe : e.target.checked
-                                            })
-                                        }
-                                    }    
-                                    
-                                    /> 
-                                    { dashOptions.subscribe ? "Enable " : "Disable" }
-                        </FlexBlock>
-                    </Flex>
-                </PanelRow>
-                <PanelRow>
-                    <Flex
-                        gap={2}
-                        align="center"
-                        justify="space-between"
-                    >
-                        <FlexItem >
-                            <label>Eneable / Disable Option II</label>
-                        </FlexItem>
-                        <FlexBlock >
-                                <FormToggle
-                                    checked={dashOptions.updates}
-                                    onChange={ (e) => { setDashoptions( {
-                                        ...dashOptions,
-                                        updates : e.target.checked
-                                        })
-                                        }
-                                    }   
-                                />
-                        </FlexBlock>
-                    </Flex>
-                </PanelRow>
-            </PanelBody>
+                                                email : e.target.value
+                                            }
+                                            )
+                                                
+                                            }} 
+                                            />
+                                    </FlexBlock>
+                                </Flex>
+                            </PanelRow>
+                        </PanelBody>   
 
-            <PanelBody title="Ex Textarea" initialOpen={false}>
-                <PanelRow>
-                    <Flex
-                        gap={2}
-                        align="center"
-                        justify="space-between"
-                        >
-                        <FlexItem >
-                            <label>TextArea Option</label>
-                        </FlexItem>
-                        <FlexBlock >
-                        <textarea 
-                                    name="comments" 
-                                    rows="4" 
-                                    cols="50"
-                                    value={dashOptions.comments}
-                                    onChange={ (e) => { setDashoptions( {
-                                                ...dashOptions,
-                                                comments : e.target.value
-                                            })
-                                        }
-                                    }  
-                                    />
-                        </FlexBlock>
-                    </Flex>
-                </PanelRow>
-            </PanelBody>
+                        <PanelBody title="Checkbox" initialOpen={false}>
+                            <PanelRow>
+                                <Flex
+                                    gap={2}
+                                    align="center"
+                                    justify="space-between"
+                                >
+                                    <FlexItem >
+                                        <label>Eneable / Disable Option</label>
+                                    </FlexItem>
+                                    <FlexBlock >
+                                        <Archeckbox name="subscribe" />
+                                    </FlexBlock>
+                                </Flex>
+                            </PanelRow>
+                            <PanelRow>
+                                <Flex
+                                    gap={2}
+                                    align="center"
+                                    justify="space-between"
+                                >
+                                    <FlexItem >
+                                        <label>Eneable / Disable Option II</label>
+                                    </FlexItem>
+                                    <FlexBlock >
+                                        <Archeckbox name="updates" />
+                                    </FlexBlock>
+                                </Flex>
+                            </PanelRow>
+                        </PanelBody>
 
-            <PanelBody title="Ex Dropdown" initialOpen={false}>
-                <PanelRow>
-                    <Flex
-                        gap={2}
-                        align="center"
-                        justify="space-between"
-                        >
-                        <FlexItem >
-                            <label>Select Option</label>
-                        </FlexItem>
-                        <FlexBlock >
-                                    <select >
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                    </select>
-                        </FlexBlock>
-                    </Flex>
-                </PanelRow>
-            </PanelBody>
+                        <PanelBody title="Textarea" initialOpen={false}>
+                            <PanelRow>
+                                <Flex
+                                    gap={2}
+                                    align="center"
+                                    justify="space-between"
+                                    >
+                                    <FlexItem >
+                                        <label>TextArea Option</label>
+                                    </FlexItem>
+                                    <FlexBlock >
+                                        <ArTextarea name="comments" />
+                                    </FlexBlock>
+                                </Flex>
+                            </PanelRow>
+                        </PanelBody>
 
-                <button type="submit" className="button primary">
-                    {saveOptions}
-                </button>
-            </form> 
-        </>
+                        <PanelBody title="Dropdown" initialOpen={false}>
+                            <PanelRow>
+                                <Flex
+                                    gap={2}
+                                    align="center"
+                                    justify="space-between"
+                                    >
+                                    <FlexItem >
+                                        <label>Select Option</label>
+                                    </FlexItem>
+                                    <FlexBlock >
+                                        <ArDropdown 
+                                            name="test_drop" 
+                                            options={ 
+                                                {
+                                                    "option":"option I",
+                                                    "option2":"option II",
+                                                    "option3":"option III"
+                                                }   
+                                            }
+                                        />
+                                    </FlexBlock>
+                                </Flex>
+                            </PanelRow>
+                        </PanelBody>
+                        
+                        <PanelBody title="Media Uploader" initialOpen={false}>
+                            <PanelRow>
+                                <Flex
+                                    gap={2}
+                                    align="center"
+                                    justify="space-between"
+                                    >
+                                    <FlexItem >
+                                        <label>Upload Image</label>
+                                    </FlexItem>
+                                    <FlexBlock >
+                                        <ArMediaUploader name="test_media" />
+                                    </FlexBlock>
+                                </Flex>
+                            </PanelRow>
+                        </PanelBody>
+                    
+                        <button type="submit" className="button primary">
+                            {saveOptions}
+                        </button>
+
+                    </form> 
+                </dataContext.Provider>
+
+            </>
 }
+
 export default ArPanel

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@wordpress/element": "^5.22.0",
+    "@wordpress/icons": "^9.36.0",
     "react-router-dom": "^6.18.0"
   }
 }

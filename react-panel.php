@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: React custom admin page plugin
- * Plugin URI: http://www.legothemes.com 
- * Description: Plugin to get title & thumbnails from youtube chanel using API.
+ * Plugin URI: http://www.legothemes.net 
+ * Description: Start a plugin with a React-powered dashboard page.
  * Version: 1.0
  * Author: Art-pixel 
- * Author URI: http://www.legothemes.com 
+ * Author URI: http://www.legothemes.net 
  */
 
  if( ! defined( 'ABSPATH' ) ) : exit(); endif; // No direct access allowed.
