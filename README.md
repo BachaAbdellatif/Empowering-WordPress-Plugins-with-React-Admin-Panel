@@ -25,3 +25,7 @@
     </code>
 </pre>
 
+<h2> Screen Options Dashbord</h2>
+
+
+![panel screen](https://github.com/BachaAbdellatif/Empowering-WordPress-Plugins-with-React-Admin-Panel/assets/150596756/4badb59a-5225-4902-84e4-a439fe521683)
