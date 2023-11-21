@@ -1,0 +1,1 @@
+{"version":3,"file":"./style-index.css","mappings":";;;AAEI;EACI;AADR;AAEQ;EACI;AAAZ,C","sources":["webpack://react-panel/./src/style.scss"],"sourcesContent":["#ar_setting {\r\n\r\n    .components-panel__header {\r\n        background-color: #222;\r\n        h2 {\r\n            color: white;\r\n        }\r\n    }\r\n}"],"names":[],"sourceRoot":""}
