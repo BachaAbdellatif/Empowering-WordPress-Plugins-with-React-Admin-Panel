@@ -1,6 +1,7 @@
 import { useState, useEffect } from '@wordpress/element';
 import { useContext } from 'react';
 import { dataContext } from './datacontext';
+import { __ , _x, _n } from '@wordpress/i18n'
 
 const ArMediaUploader = ({name}) => {
   
@@ -23,9 +24,9 @@ const ArMediaUploader = ({name}) => {
   //------ Open media Library -
   const openMediaUploader = () => {
       const mediaUploader = wp.media({
-        frame: 'select',
-        title: 'Upload or Select Media',
-        button: { text: 'Use this media' }
+        frame: __('select',"translate-name"),
+        title: __('Upload or Select Media',"translate-name"),
+        button: { text: __('Use this media',"translate-name") }
       })
     
       mediaUploader.on('select', () => {
@@ -51,7 +52,7 @@ const ArMediaUploader = ({name}) => {
   return  <>
     { selectedAttachment != "" && <img src={ Array.isArray(selectedAttachment) ? selectedAttachment[1] : selectedAttachment } alt="Selected Attachment" /> }
     <div>
-      <button onClick={openMediaUploader} className='button primary'>Select Image</button>
+      <button onClick={openMediaUploader} className='button primary'>{__('Select Image',"translate-name")}</button>
       { selectedAttachment != "" &&  <button className='button primary' onClick={deleteMedia}>Delete</button> }
     </div>
     

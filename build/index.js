@@ -2223,6 +2223,60 @@ const ArCheckbox = ({
 
 /***/ }),
 
+/***/ "./src/panel/component/color-picker.jsx":
+/*!**********************************************!*\
+  !*** ./src/panel/component/color-picker.jsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _datacontext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./datacontext */ "./src/panel/component/datacontext.jsx");
+
+
+
+
+
+const ArColorPicker = ({
+  name
+}) => {
+  const [dashOptions, setDashoptions] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_datacontext__WEBPACK_IMPORTED_MODULE_3__.dataContext);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    colors: [{
+      name: 'red',
+      color: '#f00'
+    }, {
+      name: 'white',
+      color: '#fff'
+    }, {
+      name: 'blue',
+      color: '#00f'
+    }],
+    value: dashOptions[name],
+    onChange: value => {
+      setDashoptions({
+        ...dashOptions,
+        [name]: value
+      });
+    },
+    style: {
+      width: "150px"
+    }
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ArColorPicker);
+
+/***/ }),
+
 /***/ "./src/panel/component/datacontext.jsx":
 /*!*********************************************!*\
   !*** ./src/panel/component/datacontext.jsx ***!
@@ -2306,7 +2360,6 @@ const ArInputText = ({
 }) => {
   const [dashOptions, setDashoptions] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_datacontext__WEBPACK_IMPORTED_MODULE_2__.dataContext);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
-    label: "input test",
     value: dashOptions[name],
     onChange: value => setDashoptions({
       ...dashOptions,
@@ -2334,6 +2387,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _datacontext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./datacontext */ "./src/panel/component/datacontext.jsx");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -2358,10 +2414,10 @@ const ArMediaUploader = ({
   //------ Open media Library -
   const openMediaUploader = () => {
     const mediaUploader = wp.media({
-      frame: 'select',
-      title: 'Upload or Select Media',
+      frame: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('select', "translate-name"),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Upload or Select Media', "translate-name"),
       button: {
-        text: 'Use this media'
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Use this media', "translate-name")
       }
     });
     mediaUploader.on('select', () => {
@@ -2381,7 +2437,7 @@ const ArMediaUploader = ({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: openMediaUploader,
     className: "button primary"
-  }, "Select Image"), selectedAttachment != "" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Select Image', "translate-name")), selectedAttachment != "" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "button primary",
     onClick: deleteMedia
   }, "Delete")));
@@ -2454,6 +2510,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component_textareaText__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./component/textareaText */ "./src/panel/component/textareaText.jsx");
 /* harmony import */ var _component_media_upload__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./component/media-upload */ "./src/panel/component/media-upload.jsx");
 /* harmony import */ var _component_datacontext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./component/datacontext */ "./src/panel/component/datacontext.jsx");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _component_color_picker__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./component/color-picker */ "./src/panel/component/color-picker.jsx");
+
+
 
 
 
@@ -2469,7 +2530,7 @@ const ArPanel = () => {
   const restApiUrl = panelLocalizer.apiUrl + "/aroptions/v1/settings";
 
   //---- state save Button
-  const [saveOptions, setsaveoptions] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)("Update Options");
+  const [saveOptions, setsaveoptions] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)("Update Options", "translate-name"));
 
   //----- state Panel options
   const [dashOptions, setDashoptions] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(panelLocalizer);
@@ -2477,15 +2538,14 @@ const ArPanel = () => {
   //--------- Function handel save option
   const handelSubmit = e => {
     e.preventDefault();
-    setsaveoptions("Updating...");
-    axios__WEBPACK_IMPORTED_MODULE_3___default().post(restApiUrl, dashOptions).then(res => {
-      setsaveoptions("Update Options");
-      console.log(res);
-    }, {
+    setsaveoptions((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)("Updating...", "translate-name"));
+    axios__WEBPACK_IMPORTED_MODULE_3___default().post(restApiUrl, dashOptions, {
       headers: {
         'content-type': 'application/json',
         'X-WP-NONCE': panelLocalizer.nonce
       }
+    }).then(res => {
+      setsaveoptions((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)("Update Options", "translate-name"));
     }).catch(re => {
       console.log(re);
     });
@@ -2502,28 +2562,20 @@ const ArPanel = () => {
     gap: 2,
     align: "center",
     justify: "space-between"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Name")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_inputText__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Name', "translate-name"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_inputText__WEBPACK_IMPORTED_MODULE_4__["default"], {
     name: "name"
   })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
     gap: 2,
     align: "center",
     justify: "space-between"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Phone")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_inputText__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Phone', "translate-name"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_inputText__WEBPACK_IMPORTED_MODULE_4__["default"], {
     name: "phone"
   })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
     gap: 2,
     align: "center",
     justify: "space-between"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Email")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    name: "email",
-    value: dashOptions.email,
-    onChange: e => {
-      setDashoptions({
-        ...dashOptions,
-        email: e.target.value
-      });
-    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Email', "translate-name"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_inputText__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    name: "email"
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Checkbox",
     initialOpen: false
@@ -2531,13 +2583,13 @@ const ArPanel = () => {
     gap: 2,
     align: "center",
     justify: "space-between"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Eneable / Disable Option")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_checkbox__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Eneable / Disable Option', "translate-name"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_checkbox__WEBPACK_IMPORTED_MODULE_5__["default"], {
     name: "subscribe"
   })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
     gap: 2,
     align: "center",
     justify: "space-between"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Eneable / Disable Option II")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_checkbox__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Eneable / Disable Option II', "translate-name"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_checkbox__WEBPACK_IMPORTED_MODULE_5__["default"], {
     name: "updates"
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Textarea",
@@ -2546,7 +2598,7 @@ const ArPanel = () => {
     gap: 2,
     align: "center",
     justify: "space-between"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "TextArea Option")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_textareaText__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('TextArea Option', "translate-name"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_textareaText__WEBPACK_IMPORTED_MODULE_7__["default"], {
     name: "comments"
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Dropdown",
@@ -2555,12 +2607,12 @@ const ArPanel = () => {
     gap: 2,
     align: "center",
     justify: "space-between"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Select Option")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_dropdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Select Option', "translate-name"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_dropdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
     name: "test_drop",
     options: {
-      "option": "option I",
-      "option2": "option II",
-      "option3": "option III"
+      "option": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Option I', "translate-name"),
+      "option2": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Option II', "translate-name"),
+      "option3": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Option III', "translate-name")
     }
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Media Uploader",
@@ -2569,8 +2621,17 @@ const ArPanel = () => {
     gap: 2,
     align: "center",
     justify: "space-between"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Upload Image")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_media_upload__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Upload Image', "translate-name"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_media_upload__WEBPACK_IMPORTED_MODULE_8__["default"], {
     name: "test_media"
+  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: "Color Palette",
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
+    gap: 2,
+    align: "center",
+    justify: "space-between"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexItem, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('ColorPicker', "translate-name"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_component_color_picker__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    name: "picker"
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "submit",
     className: "button primary"
@@ -2623,6 +2684,17 @@ module.exports = window["wp"]["components"];
 
 "use strict";
 module.exports = window["wp"]["element"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["i18n"];
 
 /***/ })
 

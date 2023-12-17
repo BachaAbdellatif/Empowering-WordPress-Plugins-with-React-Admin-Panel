@@ -6,8 +6,7 @@ const ArInputText = ( {name} ) => {
        
     const [dashOptions, setDashoptions] = useContext(dataContext)
         
-    return <TextControl
-            label= "input test"
+    return <TextControl 
             value = {dashOptions[name]}
             onChange={ (value) =>  setDashoptions( {
                 ...dashOptions,

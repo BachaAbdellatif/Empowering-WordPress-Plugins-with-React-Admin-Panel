@@ -1,11 +1,12 @@
 <?php
 /**
  * Plugin Name: React custom admin page plugin
- * Plugin URI: http://www.legothemes.net 
+ * Plugin URI: http://www.legothemes.com 
  * Description: Start a plugin with a React-powered dashboard page.
  * Version: 1.0
  * Author: Art-pixel 
- * Author URI: http://www.legothemes.net 
+ * Author URI: http://www.legothemes.com 
+ * Text Domain: translate-name
  */
 
  if( ! defined( 'ABSPATH' ) ) : exit(); endif; // No direct access allowed.

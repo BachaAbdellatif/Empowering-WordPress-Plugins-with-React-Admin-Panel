@@ -7,6 +7,8 @@ import ArDropdown from "./component/dropdown";
 import ArTextarea from "./component/textareaText";
 import ArMediaUploader from "./component/media-upload";
 import { dataContext } from './component/datacontext';
+import { __ , _x, _n } from '@wordpress/i18n'
+import ArColorPicker from "./component/color-picker";
 
 const ArPanel = () => {
 
@@ -14,7 +16,7 @@ const ArPanel = () => {
     const restApiUrl = panelLocalizer.apiUrl + "/aroptions/v1/settings"
 
     //---- state save Button
-    const [saveOptions, setsaveoptions] = useState("Update Options")
+    const [saveOptions, setsaveoptions] = useState(__("Update Options","translate-name"))
 
     //----- state Panel options
     const [dashOptions, setDashoptions] = useState(panelLocalizer)
@@ -22,17 +24,17 @@ const ArPanel = () => {
     //--------- Function handel save option
     const handelSubmit = (e) => {
         e.preventDefault()
-        setsaveoptions("Updating...")
+        setsaveoptions( __("Updating...","translate-name"))
         axios.post(restApiUrl,
-                dashOptions
-            ).then((res) => {
-                setsaveoptions("Update Options")
-                console.log(res)
-            }, {
-                headers: {
-                    'content-type': 'application/json',
-                    'X-WP-NONCE': panelLocalizer.nonce
+                dashOptions,
+                {
+                    headers: {
+                        'content-type': 'application/json',
+                        'X-WP-NONCE': panelLocalizer.nonce
+                    }
                 }
+            ).then((res) => {
+                setsaveoptions(__("Update Options","translate-name"))
             }).catch( (re) => {
                 console.log(re)
             })
@@ -52,11 +54,12 @@ const ArPanel = () => {
                                     justify="space-between"
                                 >
                                     <FlexItem >
-                                        <label>Name</label>
+                                        <label>{__('Name',"translate-name")}</label>
                                     </FlexItem>
                                     <FlexBlock >
                                         <ArInputText name="name" />
                                     </FlexBlock>
+                                    
                                 </Flex>
                             </PanelRow>
                             <PanelRow>
@@ -66,7 +69,7 @@ const ArPanel = () => {
                                     justify="space-between"
                                 >
                                     <FlexItem >
-                                        <label>Phone</label>
+                                        <label>{__('Phone',"translate-name")}</label>
                                     </FlexItem>
                                     <FlexBlock >
                                         <ArInputText name="phone" />
@@ -80,21 +83,10 @@ const ArPanel = () => {
                                 justify="space-between"
                                 >
                                     <FlexItem >
-                                        <label>Email</label>
+                                        <label>{__('Email',"translate-name")}</label>
                                     </FlexItem>
                                     <FlexBlock >
-                                        <input 
-                                            type="text" 
-                                            name="email" 
-                                            value={dashOptions.email}
-                                            onChange={ (e) => { setDashoptions( {
-                                                ...dashOptions,
-                                                email : e.target.value
-                                            }
-                                            )
-                                                
-                                            }} 
-                                            />
+                                        <ArInputText name="email" />
                                     </FlexBlock>
                                 </Flex>
                             </PanelRow>
@@ -108,7 +100,7 @@ const ArPanel = () => {
                                     justify="space-between"
                                 >
                                     <FlexItem >
-                                        <label>Eneable / Disable Option</label>
+                                        <label>{__('Eneable / Disable Option',"translate-name")}</label>
                                     </FlexItem>
                                     <FlexBlock >
                                         <Archeckbox name="subscribe" />
@@ -122,7 +114,7 @@ const ArPanel = () => {
                                     justify="space-between"
                                 >
                                     <FlexItem >
-                                        <label>Eneable / Disable Option II</label>
+                                        <label>{__('Eneable / Disable Option II',"translate-name")}</label>
                                     </FlexItem>
                                     <FlexBlock >
                                         <Archeckbox name="updates" />
@@ -139,7 +131,7 @@ const ArPanel = () => {
                                     justify="space-between"
                                     >
                                     <FlexItem >
-                                        <label>TextArea Option</label>
+                                        <label>{__('TextArea Option',"translate-name")}</label>
                                     </FlexItem>
                                     <FlexBlock >
                                         <ArTextarea name="comments" />
@@ -156,16 +148,16 @@ const ArPanel = () => {
                                     justify="space-between"
                                     >
                                     <FlexItem >
-                                        <label>Select Option</label>
+                                        <label>{__('Select Option',"translate-name")}</label>
                                     </FlexItem>
                                     <FlexBlock >
                                         <ArDropdown 
                                             name="test_drop" 
                                             options={ 
                                                 {
-                                                    "option":"option I",
-                                                    "option2":"option II",
-                                                    "option3":"option III"
+                                                    "option":__('Option I',"translate-name"),
+                                                    "option2":__('Option II',"translate-name"),
+                                                    "option3":__('Option III',"translate-name")
                                                 }   
                                             }
                                         />
@@ -182,11 +174,30 @@ const ArPanel = () => {
                                     justify="space-between"
                                     >
                                     <FlexItem >
-                                        <label>Upload Image</label>
+                                        <label>{__('Upload Image',"translate-name")}</label>
                                     </FlexItem>
                                     <FlexBlock >
                                         <ArMediaUploader name="test_media" />
                                     </FlexBlock>
+
+                                </Flex>
+                            </PanelRow>
+                        </PanelBody>
+
+                        <PanelBody title="Color Palette" initialOpen={false}>
+                            <PanelRow>
+                                <Flex
+                                    gap={2}
+                                    align="center"
+                                    justify="space-between"
+                                    >
+                                    <FlexItem >
+                                        <label>{__('ColorPicker',"translate-name")}</label>
+                                    </FlexItem>
+                                    <FlexBlock >
+                                        <ArColorPicker name="picker" />
+                                    </FlexBlock>
+
                                 </Flex>
                             </PanelRow>
                         </PanelBody>
